@@ -1,289 +1,461 @@
-# FilmCraft v0.6.0 RC19 — 한국어 커뮤니티 패치
+<p align="center">
+  <a href="https://getartcraft.com/">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="docs/brand/artcraft-logo-white.svg">
+      <img alt="ArtCraft" src="docs/brand/artcraft-logo.svg" width="200">
+    </picture>
+  </a>
+</p>
+
+
+<h1 align="center">FilmCraft</h1>
 
 <p align="center">
-  <img src="docs/images/filmcraft-hero.png" alt="FilmCraft 영상 편집기 화면" width="100%">
+  <b>Video editing, color and sound; an open-source, clean-room reimplementation of Adobe Premiere Pro, rebuilt in pure Rust.</b>
 </p>
 
 <p align="center">
-  <strong>Rust 기반 오픈소스 비선형 영상 편집기 · 한국어 UI · 한글 문자/자막 · YouTube Shorts 내보내기</strong>
+  An open-source, clean-room take on the Adobe Premiere Pro workflow: native on macOS, Windows and Linux, and in the browser via WebAssembly.<br>
+  By the ArtCraft team.
 </p>
 
 <p align="center">
-  <a href="https://github.com/storytold/filmcraft">FilmCraft 원본 프로젝트</a> ·
-  <a href="https://discord.gg/artcraft">ArtCraft Discord</a> ·
-  <a href="https://ctee.kr/place/caw">한국어 패치 후원</a>
+  <a href="#license-and-credits"><img alt="License: MIT OR Apache-2.0" src="https://img.shields.io/badge/license-MIT%20%7C%20Apache--2.0-8b5cf6"></a>
+  <img alt="Written in pure Rust" src="https://img.shields.io/badge/pure-Rust-6a3fd6?logo=rust&logoColor=white">
+  <img alt="Runs on macOS, Windows and Linux" src="https://img.shields.io/badge/runs%20on-macOS%20%7C%20Windows%20%7C%20Linux-8b5cf6">
+  <a href="#status"><img alt="Status: young and moving fast" src="https://img.shields.io/badge/status-young%20and%20moving%20fast-6a3fd6"></a>
 </p>
 
-> [!IMPORTANT]
-> **현재 버전: FilmCraft 한국어 패치 v0.6.0 RC19 (Release Candidate)**  
-> 이 저장소는 FilmCraft 원본의 **비공식 한국어 커뮤니티 패치**를 위한 소스입니다. `v0.6.0 RC19`는 한국어 패치 릴리스 표기이며, 원본 워크스페이스의 Cargo 버전(`0.5.0`)과 별개입니다. 원본 ArtCraft 팀의 공식 한국어 릴리스가 아닙니다.
->
-> **Windows 실제 컴파일·GUI 실행, 한글 IME 실입력, NVENC 인코딩, Shorts MP4 출력, 설치·업데이트·제거의 최종 검증은 아직 확인되지 않았습니다.** 따라서 정식 안정판으로 표기하지 않습니다.
+<p align="center">
+  <a href="https://discord.gg/artcraft"><img alt="Join the ArtCraft community on Discord" src="https://img.shields.io/badge/Join%20us%20on%20Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white" height="40"></a>
+</p>
 
-## 프로젝트 소개
+<p align="center">
+  <a href="https://getartcraft.com/apps/filmcraft"><b>FilmCraft on getartcraft.com</b></a> ·
+  <a href="https://getartcraft.com/">ArtCraft</a> ·
+  <a href="https://getartcraft.com/apps">All Crafting Apps</a>
+</p>
 
-FilmCraft는 멀티트랙 영상 편집, 소스/프로그램 모니터, 색보정, 전환 효과, 오디오 편집, 텍스트 그래픽, 자막과 결과물 내보내기를 제공하는 오픈소스 NLE(비선형 영상 편집기)입니다. 원본 프로젝트는 Rust 기반으로 macOS, Windows, Linux 및 WebAssembly 환경을 목표로 개발됩니다.
+<br>
 
-한국어 커뮤니티 패치는 **한국어 UI 및 Windows 사용자 환경**에 초점을 맞추며, 한글 입력과 자막 호환성, 세로형 Shorts 출력, 잘못된 Windows 경로 차단, 사용자에게 보이는 오류 처리, 설치·배포 검증 도구를 보완합니다.
+<p align="center">
+  <img src="docs/images/filmcraft-hero.png" alt="FilmCraft in the Color workspace, mid-way through an Apollo 11 documentary cut from NASA footage: the Program monitor on the Saturn V clearing the launch tower with a Launch Complex 39A lower third and an air-to-ground subtitle, Effect Controls with Lumetri and Scale keyframes on the shot, the Lumetri Color panel, bins of NASA selects, and a timeline with 49 picture cuts, B-roll, titles, a caption track, mission audio, a ducked music bed, named markers, a rendered section and live loudness meters" width="100%">
+</p>
 
-| 프로젝트 정보 | 내용 |
-| --- | --- |
-| 이름 | FilmCraft |
-| 커뮤니티 패치 | **v0.6.0 RC19** |
-| 언어/UI | Rust, egui / eframe |
-| 원본 Cargo 패키지 버전 | `0.5.0` (패치 버전과 다름) |
-| 중점 운영체제 | Windows x64 한국어 환경 |
-| 기반 소스 | [storytold/filmcraft](https://github.com/storytold/filmcraft) |
-| 라이선스 | `MIT OR Apache-2.0` (원본 고지·제3자 라이선스 준수) |
-| 배포 상태 | **개발 중 / Release Candidate / 실기기 수락 검사 미완료** |
-
-## 주요 기능 및 현재 상태
-
-이 표의 **구현**은 RC19 소스에 기능 또는 호출 경로가 존재한다는 뜻입니다. **실기기 검증 필요**는 실제 Windows에서 정상 동작 여부를 별도로 확인해야 한다는 뜻입니다.
-
-| 분야 | 포함된 기능 | RC19 상태 |
-| --- | --- | --- |
-| 영상 편집 | 멀티트랙 타임라인, 클립 배치·트리밍, 마커, 키프레임, 실행 취소, 프로젝트 관리 | 원본 기반 구현 |
-| 미리보기 | 소스/프로그램 모니터, 프레임 탐색, GPU 합성 경로 | 원본 기반 구현 / 장치별 검증 필요 |
-| 색보정·영상 효과 | 색온도, 노출, 대비, 커브, 컬러 휠, LUT, 효과·전환 | 원본 기반 구현 |
-| 오디오 | 트랙 믹싱, 게인, 팬, 오디오 효과, 레벨 모니터링 | 원본 기반 구현 |
-| 그래픽 문자 도구 | 문자·도형, 글꼴/스타일, 텍스트 편집, Windows 한글 IME 대응 | 구현 / **실제 한글 입력 검증 필요** |
-| 자막 | SRT·WebVTT, 한글 글꼴, CP949 SRT 읽기, 긴 자막 줄바꿈 | 한국어판 개선 코드 포함 |
-| 한국어 UI | 언어 선택·설정 유지, 한국어 번역 | **3,783개 한국어 항목**, 기준 키 100% 대응 |
-| 빠른 내보내기 | 사용자 프리셋, H.264 MP4, CPU/GPU 인코딩 선택 | 구현 / 실제 출력 검증 필요 |
-| YouTube Shorts | 1080×1920 (9:16) 세로형 프리셋 | 구현 / 실제 MP4 검증 필요 |
-| 출력 경로 보호 | 파일명·상위 폴더 검증, 한글·UNC 경로, 프리셋 확장자 처리 | **RC19 강화**, 정적 테스트 통과 |
-| 외부 링크 | 후원·Discord 버튼, 기본 브라우저 호출·실패 시 URL 복사 | 코드 구현 / 실제 클릭 검증 필요 |
-| Windows 패키징 | 설치형·포터블 제작 설정, 체크섬 검사, 수락 리포트 | 스크립트 존재 / 설치 동작 미검증 |
+<p align="center"><sub><i>Apollo 11 - Tranquility</i>: a three-minute documentary edit of NASA's 1969 launch, landing and moonwalk film, with subtitles from the mission transcript. Every frame in these screenshots comes from public-domain footage, decoded, composited and graded by FilmCraft's own code.</sub></p>
 
 > [!NOTE]
-> 번역 키의 **100% 대응**은 번역표와 참조 키의 기계적 대응률입니다. 모든 문구의 자연스러움, 글꼴 품질, 창 크기별 표시 상태가 100% 검증되었다는 뜻은 아닙니다.
+> **ArtCraft is a community of artists from all walks of life.** Digital, generative, music,
+> games &mdash; if you make things, you're one of us. **[Come say hi on Discord](https://discord.gg/artcraft).**
 
-## RC19에서 새롭게 개선된 기능
+<p align="center">
+  <a href="#edit">Edit</a> ·
+  <a href="#color">Color</a> ·
+  <a href="#effects-and-motion">Effects</a> ·
+  <a href="#audio">Audio</a> ·
+  <a href="#titles-and-captions">Titles</a> ·
+  <a href="#formats-and-codecs">Formats</a> ·
+  <a href="#export">Export</a> ·
+  <a href="#interchange">Interchange</a> ·
+  <a href="#built-for-agents">Agents</a> ·
+  <a href="#get-started">Get started</a> ·
+  <a href="#downloads">Downloads</a> ·
+  <a href="#documentation">Docs</a> ·
+  <a href="#status">Status</a>
+</p>
 
-### 1. Windows 내보내기 경로 전체 검증
+<br>
 
-이전에는 출력 파일 이름 검증에 초점이 맞춰져 있었지만, RC19에서는 **파일명뿐 아니라 경로의 상위 폴더 구성 요소까지 검사**합니다. 빠른 내보내기, 일반 내보내기 및 내보내기 대기열로 전달되는 경로에 적용됩니다.
+FilmCraft is a non-linear editor for people who know Premiere: the same panels, workspaces, tools and shortcuts, so your hands already know where everything is. Underneath, it is new from the bitstream up. The H.264, HEVC, ProRes and AAC codecs are our own, written in Rust from the public specifications. A GPU compositor works in linear light. Frame math runs on exact integer time, so edits never drift. And every action in the app is a command that an AI agent can drive as precisely as you can.
 
-- 빈 파일명, 경로 끝 구분자, 잘못된 문자 및 제어문자 거부
-- `CON`, `PRN`, `AUX`, `NUL`, `COM1`~`COM9`, `LPT1`~`LPT9` 등 Windows 예약 장치명 차단
-- 확장자가 붙은 장치명과 일부 위 첨자 숫자(예: `COM¹.mp4`)도 차단
-- `\\?\` 등 장치 네임스페이스와 잘못된 드라이브 상대경로 차단
-- 정상적인 **한글 파일·폴더 이름**, 로컬 절대/상대 경로, UNC 공유 경로 허용
-- 잘못된 경로 입력 시 내보내기를 시작하지 않고 한국어 상태 안내 제공
+<br>
 
-| 입력 예시 | 예상 처리 |
-| --- | --- |
-| `C:\영상\가을 여행.mp4` | 허용 |
-| `\\server\share\가을.mp4` | 허용 |
-| `영상/한국어 123 ABC.mp4` | 허용 |
-| `C:\NUL\영상.mp4` | 거부 |
-| `C:\bad?folder\영상.mp4` | 거부 |
-| `COM¹.mp4` | 거부 |
-| `C:relative.mp4` | 거부 |
+## Edit
 
-**제한:** 경로 문자열이 유효해도 실제 폴더가 없거나 쓰기 권한이 없으면 출력은 실패할 수 있습니다. 이 검증은 파일 생성의 성공을 보장하지 않습니다.
+<p align="center">
+  <img src="docs/images/filmcraft-assembly.png" alt="Assembly workspace: bins of film thumbnails, Carnival of Souls in the Source monitor, a Night of the Living Dead cemetery shot in the Program monitor, and the trailer on a three-track timeline with a Chopin score on A2 and loudness meters" width="100%">
+</p>
 
-### 2. 프리셋 전환 시 파일 확장자 안정화
+<p align="center"><sub>The Assembly workspace, cutting a trailer for <i>Night of the Living Dead</i> (1968) with an insert from <i>Carnival of Souls</i> (1962).</sub></p>
 
-- Windows 역슬래시(`\`)와 슬래시(`/`)를 모두 경로 구분자로 처리
-- 부모 폴더의 점(`.`)을 파일 확장자로 잘못 판단하지 않음
-- `C:\folder.v2\여행.mov`에서 프리셋을 MP4로 전환하면 `C:\folder.v2\여행.mp4`로 처리
-- 한글 파일명과 상위 폴더 경로 보존
+**A timeline you already know.** Source and Program monitors, bins with thumbnails, a multi-track timeline with patch and target buttons, sync locks and linked selection. The Editing, Assembly, Color, Effects and Audio workspaces are all there, and every panel docks wherever you want it.
 
-### 3. Windows 수락 검사 보고서 추가
+- **Three-point editing.** Mark In and Out in the Source monitor, then insert (`,`) or overwrite (`.`) onto the patched tracks. Lift (`;`) and extract (`'`) take ranges back out.
+- **Every trim.** Ripple, roll, slip, slide, rate stretch and razor tools. Trim mode selects edit points as ripple, roll or trim, nudges them a frame at a time (`⌥←` `⌥→`, ×5 with `⇧`), toggles the trim type with `⌃T` and extends them to the playhead with `E`. `Q` and `W` ripple-trim to the playhead. The **Trim Monitor** shows both sides of the edit, and **dynamic trimming** trims live while it plays: `L` forward, `J` back, `K` to stop and commit as one undo step.
+- **Exact time.** Every edit is computed on integer ticks: 254,016,000,000 per second, which divides evenly by every common frame rate and sample rate. 23.976, 29.97 drop-frame and 59.94 are exact, not approximate.
+- **The details pros rely on.** Markers with colours, names and durations; export sequence review notes with **Markers ▸ Export Markers as CSV…**; add edit (`⌘K`) on one or all tracks; nesting; copy, paste and paste insert; ripple delete and close gap; snapping; unlimited undo with a History panel.
+- **Your keys.** A Keyboard Shortcuts editor (`⌥⌘K`) with a drawn keyboard, panel-specific shortcuts, conflict warnings and presets for FilmCraft, Premiere Pro, Final Cut Pro and Avid key layouts.
+- **Never lose work.** Saves are atomic, auto-save keeps a rolling set of versions, and a crash-recovery journal written about a second after each edit brings back unsaved changes after a crash or power cut.
 
-`scripts/rc19-windows-acceptance.ps1`은 개발자가 Windows 환경에서 빌드·테스트·패키지 관련 점검 결과를 기록할 수 있도록 추가된 스크립트입니다. 보고서 경로는 `build-logs/rc19-acceptance.json`입니다.
+<p align="center">
+  <img src="docs/images/filmcraft-timeline.png" alt="Timeline close-up: Night of the Living Dead shots with dissolves on V1, a Carnival of Souls insert on V2, the Chopin nocturne as a green waveform on A2, coloured markers along the ruler, and the loudness meter reading momentary, short-term, integrated and true-peak values" width="100%">
+</p>
 
-자동 확인 정보에는 Windows x64 환경, Rust·Python·설치 제작 도구·ffprobe의 존재, 요청된 작업의 종료 코드, 설치/포터블 산출물과 GUI 실행 파일의 존재 여부가 포함됩니다.
+<p align="center"><sub>Up close: dissolves, an insert on V2, the score on A2, coloured markers, and the loudness meters on the right.</sub></p>
 
-**한글 실제 입력, 브라우저 버튼 클릭, MP4 디코딩, NVENC 실동작, 설치·제거 등은 자동 성공 처리하지 않고 `NOT_TESTED`로 기록**합니다.
+<br>
 
-## 기존 RC 버전에서 유지된 한국어판 기능
+## Color
 
-### 한국어 문자 도구 및 IME
+<p align="center">
+  <img src="docs/images/filmcraft-color.png" alt="Color workspace on Charade (1963): Cary Grant and Audrey Hepburn in the Program monitor, the waveform and vectorscope on the left, and the trailer bins and timeline below" width="100%">
+</p>
 
-- Windows IME 조합(Preedit), 확정(Commit), 주변 문자 삭제 이벤트 처리 코드
-- 확정 문자열이 일반 텍스트 이벤트로 중복 전달되는 상황 완화
-- 반복되는 동일 한글 입력과 중복 에코 텍스트 구분
-- 새 텍스트 레이어 및 재편집 시 키보드 포커스 요청 조정
-- 조합 도중 Enter·Escape·Backspace 등의 키 처리 개선
-- 이벤트 유형·길이·포커스 상태 중심의 선택적 진단(입력 원문은 기록하지 않도록 설계)
-- RC17의 `has_ime_edit()` 미사용 함수 경고에 대한 **`#[cfg(test)]` 처리 유지**
+<p align="center"><sub>The Color workspace on <i>Charade</i> (1963), with live scopes beside the Program monitor.</sub></p>
 
-**중요:** 한글 입력 처리 코드는 존재하지만 Microsoft IME에서 `안녕하세요`, `한글 ABC 123`, `한한` 입력을 실제로 성공했다고 확인한 상태는 아닙니다.
+**A complete Lumetri-style grading panel**, in the order a colourist works:
 
-### 한글 자막 및 그래픽
+- **Basic Correction:** temperature and tint, exposure, contrast, highlights, shadows, whites, blacks, saturation.
+- **Creative:** eight built-in looks with an intensity control, plus faded film, sharpen and vibrance. The looks are colour transforms written in code, not LUT files.
+- **Curves:** an RGB curve editor with monotone-cubic interpolation (no overshoot), and hue vs saturation, hue vs hue, hue vs luma, luma vs saturation and saturation vs saturation.
+- **Color Wheels:** shadow, midtone and highlight wheels, each with its own lightness control.
+- **HSL Secondary:** key a colour by hue, saturation and luma, view the key as a matte, and correct only what you selected.
+- **Vignette:** amount, midpoint, roundness and feather.
 
-- UTF-8 및 구형 **CP949** SRT 입력 처리
-- SRT·WebVTT 자막 기능과 글꼴·스타일 설정
-- 자막에 지정한 글꼴을 줄바꿈 계산과 렌더링에 반영하도록 보완
-- 긴 한글 자막의 외곽선·배경 여백을 고려한 줄바꿈
-- 자막 버퍼가 과도하게 커지지 않도록 프레임 범위 제한
+<table>
+  <tr>
+    <td width="34%" valign="top" align="center">
+      <img src="docs/images/filmcraft-lumetri.png" alt="The Lumetri Color panel on Charade (1963): Basic Correction sliders with coloured temperature and tint tracks, collapsed Creative and Curves sections, shadow, midtone and highlight colour wheels, and HSL Secondary and Vignette toggles"><br>
+      <sub><b>The Lumetri Color panel.</b> Basic Correction, Color Wheels and every other section, each with its own on/off switch.</sub>
+    </td>
+    <td width="66%" valign="top" align="center">
+      <img src="docs/images/filmcraft-scopes.png" alt="Lumetri Scopes: a green luma waveform and a vectorscope of a Charade (1963) frame"><br>
+      <sub><b>Scopes that tell the truth.</b> The waveform and vectorscope are computed from the graded frame. All grading happens in linear light, in 32-bit float.</sub>
+    </td>
+  </tr>
+</table>
 
-### YouTube Shorts 빠른 내보내기
+<br>
 
-| 설정 | 기본값 |
-| --- | --- |
-| 프리셋 | **YouTube Shorts 1080×1920 (9:16)** |
-| 해상도 | **1080 × 1920** |
-| 출력 | MP4 / H.264 |
-| 목표·최대 비트레이트 | 12 Mbps / 16 Mbps |
-| 오디오 | AAC, 48 kHz, 스테레오 |
-| 프레임 속도 | 시퀀스 설정 기반 |
-| 화면 맞춤 | Scale to Fill (가로 영상의 좌우 크롭 가능) |
+## Effects and motion
 
-프리셋과 설정 해석은 코드 및 테스트에서 확인되었지만, 실제 내보낸 MP4가 정상 재생되고 플랫폼에 맞는지 별도 확인해야 합니다.
+<p align="center">
+  <img src="docs/images/filmcraft-effects.png" alt="Effects workspace: Effect Controls with Motion, Opacity, Time Remapping and Lumetri Color, NASA's Earth Views from the ISS in the Program monitor, and the Effects browser open on the Dissolve transitions" width="100%">
+</p>
 
-### 후원·Discord 연결
+<p align="center"><sub>NASA's <i>Earth Views from the ISS</i> with a look applied, and the Effects browser open on the dissolves.</sub></p>
 
-- 헤더의 후원·Discord 접근 기능
-- 좁은 창에서 클릭 영역과 창 드래그 영역의 충돌 방지
-- 운영체제 기본 브라우저에 HTTPS URL 열기 요청
-- 브라우저 호출 실패 시 상태 안내 및 URL 클립보드 복사 경로
-- 후원: [한국어 커뮤니티 패치 후원](https://ctee.kr/place/caw)
-- Discord: [ArtCraft 커뮤니티](https://discord.gg/artcraft)
+- **Premiere 26's full Video Effects bin (93 effects in 16 folders), the Legacy bin and the obsolete effects old projects use, plus around 30 transitions.** Blurs (Bokeh, Focus, Compound), keys (Ultra Key, Track Matte), distortions (Corner Pin, Turbulent Displace, Warp Stabilizer), Lights & Glows, Immersive Video (VR) effects on equirectangular footage, Posterize Time, Echo and more. Cross dissolve, dip to black or white, film dissolve, wipes, irises, pushes, slides, zooms, page peel, cube spin and more.
+- **Motion and opacity on every clip:** position, scale, rotation, anchor point and anti-flicker, plus 26 blend modes.
+- **Keyframes like Premiere's:** linear, Bezier, auto and continuous Bezier, hold, ease in and ease out. Effect Controls shows a keyframe lane for every parameter under a time ruler with the playhead's handle, and each animated parameter opens into **value and velocity graphs** with draggable influence handles. Effect Controls and the Properties panel share the keyframe navigator (◀ ◆ ▶): add or remove the keyframe at the playhead, step to the previous or next one.
+- **A GPU compositor** built on wgpu (Metal, Vulkan, DirectX 12, WebGPU). It samples YUV straight from the decoder with footprint supersampling and blends in linear light. A CPU path renders the same frames, and the two are tested against each other.
 
-실제 브라우저 탭 열림 여부는 Windows에서 수동 확인이 필요합니다. **한국어 패치 후원은 원본 ArtCraft의 공식 후원과 별개이며 선택 사항**입니다.
+<p align="center">
+  <img src="docs/images/filmcraft-keyframes.png" alt="Effect Controls with the value and velocity graphs of an eased Scale push-in on the Night of the Living Dead title card, the Program monitor showing the title over a country road, and the Properties panel with Transform and Crop" width="100%">
+</p>
 
-## GPU 인코딩 구현 범위
+<p align="center"><sub>An eased push-in on the title card: the value graph, the velocity graph and the Bezier influence handle.</sub></p>
 
-**GPU 영상 합성, GPU 장치 탐색, 외부 FFmpeg 시험 인코딩, FilmCraft 자체 하드웨어 인코딩은 서로 다른 기능입니다.**
+<br>
 
-| 인코딩 방식 | RC19 코드 상태 | 검증 및 제한 |
-| --- | --- | --- |
-| CPU H.264 | 소프트웨어 출력 경로 존재 | 실제 RC19 MP4 출력 검증 필요 |
-| NVIDIA NVENC | Windows NVENC 인코딩 경로 존재 | 지원 GPU·드라이버에서 실측 필요 |
-| macOS VideoToolbox | 원본 플랫폼 인코딩 경로 존재 | macOS 실기기 검증 필요 |
-| AMD AMF | **FilmCraft 내부 H.264 인코더 미구현** | 외부 FFmpeg 시험과 별개 |
-| Intel Quick Sync Video (QSV) | **FilmCraft 내부 H.264 인코더 미구현** | 장치 후보 조회와 별개 |
-| Windows Media Foundation 탐색 | 인코더 후보 이름 조회 코드 존재 | 실제 AMF/QSV 출력 지원을 의미하지 않음 |
-| 외부 FFmpeg GPU 진단 | NVIDIA/AMD/Intel 시험 도구 존재 | FilmCraft 엔진 기능과 별개 |
+## Audio
 
-지원 가능한 환경에서 GPU 인코딩을 시도하고 실패 시 CPU 출력으로 전환하는 경로가 있지만, **RC19에서 모든 GPU의 정상 출력·자동 복구가 검증되었다고 표시하지 않습니다.**
+- **Loudness meters to broadcast standards.** Momentary, short-term and integrated loudness and true peak to ITU-R BS.1770 and EBU R128, alongside the peak meters. Our integrated reading matches ffmpeg's `ebur128` filter to the tenth of a LU.
+- **Clip effects on our own DSP library:** parametric EQ, high-pass, low-pass and band-pass filters, dynamics, a true-peak limiter, delay, reverb, DeNoise, DeHummer, invert and pitch shift. Parameters can be keyframed. Effects stay continuous across scrubbing, playback and export, with latency compensated.
+- **Audio Track Mixer and Audio Clip Mixer:** faders, pan, mute, solo, five insert slots per track (pre- or post-fader), sends, submixes and a Mix track, all sample-accurate and latency-compensated. 24 tracks with three effects each mix about six times faster than real time on one core.
+- **Automation like a console:** Read, Latch, Touch and Write modes recorded live from the mixer during playback, shown and edited as track keyframes on the timeline. Plus the Audio Gain dialog (set, adjust, normalize) and constant-power crossfades.
+- **Audio-clock playback.** The sound card is the master clock, so picture follows sound and never the other way round.
 
-## 개발 단계별 진행 상황
+<br>
 
-| 분류 | 항목 |
-| --- | --- |
-| **코드 구현 확인** | 한국어 번역표, 한글 IME 처리, CP949 SRT, Shorts 프리셋, 전체 Windows 출력 경로 검사, 예약 장치명 차단, RC19 수락 리포트 |
-| **부분 완성·검증 필요** | 실제 한글 문자 입력, 자막 렌더링 일치, NVENC·CPU MP4 출력, 설치형/포터블 배포, 링크 클릭, Windows 안정성 |
-| **미구현** | FilmCraft 자체 AMD AMF H.264 인코더, FilmCraft 자체 Intel QSV H.264 인코더 |
-| **장기 개선 과제** | GPU 최적화 확대, 실제 미디어 코퍼스, 크로스플랫폼 런타임 검증, 사용자 워크플로 자동화 테스트 |
+## Titles and captions
 
-## 정적 점검 현황
+- **A real text engine:** OpenType shaping with kerning and ligatures, bidirectional text, line breaking, tracking and leading, drawn in linear light and sharp at any scale or rotation.
+- **Type, Shape and Pen tools** on the Program monitor: click to type, edit with a caret and selection, drag out rectangles, ellipses and paths. Graphic clips hold text and shape layers with fill, strokes, background and shadow, all keyframable, and edited in the Properties panel.
+- **Captions:** caption tracks in Subtitle, CEA-608, CEA-708 and Teletext formats; import and export SRT, WebVTT and SCC with frame-exact timing; edit captions in the Text panel and burn them into exports.
+<br>
 
-RC19 전체 소스 ZIP의 Python 검사 코드를 기준으로, 아래 결과를 별도로 확인했습니다.
+## Formats and codecs
 
-| 검사 | 확인 결과 |
-| --- | --- |
-| `check_rc19_features.py` | **4개 정적 테스트 통과** |
-| `check_rc18_export.py` | **5개 정적 테스트 통과** |
-| `check_rc17_ime_dead_code.py` | `has_ime_edit` 테스트 전용 처리 검사 통과 |
-| `check_rc15_links.py` 및 `check_rc16_ui.py` | 기존 버튼·링크 회귀 검사 통과 |
-| `check_i18n.py` | 한국어 **3,783개 항목**, 기준 3,514개 키 중 3,514개 대응, 누락 0개 |
-| Windows GUI / GPU / 실제 설치·출력 | **미수행** |
+No FFmpeg inside. The video codecs, AAC, Opus and the containers are our own Rust code, implemented from the public ITU-T, ISO and IETF specifications and tested frame by frame against ffmpeg as an external oracle.
 
-이 결과는 **소스 구조 및 번역 파일 정적 검사**입니다. Rust 실제 컴파일 통과, Windows 실행이나 사용성 인증을 의미하지 않습니다.
+| | Decode | Encode | Notes |
+|---|:---:|:---:|---|
+| **H.264 / AVC** | ✓ | ✓ | Decoder bit-exact on 37+ streams, 500–600 fps at 1080p. Encoder: High, Main and Baseline profiles, CABAC, B-frames, CRF/CBR/VBR/2-pass |
+| **HEVC / H.265** | ✓ | | Main and Main 10, bit-exact on 41 streams (tiles, WPP, PCM, long-term references), about 225 fps at 1080p |
+| **Apple ProRes** | ✓ | ✓ | Decodes 422 Proxy to 4444 XQ; export writes 422 HQ |
+| **AAC-LC** | ✓ | ✓ | |
+| **VP9** | ✓ | | Profiles 0–3, 8/10/12-bit, 4:2:0 to 4:4:4, tiles and superframes; bit-exact on 50+ streams; in WebM/Matroska and MP4 |
+| **Opus** | ✓ | | SILK, CELT, hybrid and multistream surround; range-exact on every RFC 8251 conformance vector; in WebM/Matroska and MP4 |
+| **AV1** | ✓ | | Main profile, 8/10-bit 4:2:0 and monochrome, every coding tool incl. film grain, superres and spatial layers; bit-exact with libdav1d on the libaom vectors tested; in MP4 and WebM/Matroska |
+| **Avid DNxHD / DNxHR** | ✓ | ✓ | All SMPTE ST 2019-1 CIDs (LB to 444, 8/10/12-bit); export writes DNxHR in MOV |
+| **MJPEG, PCM** | ✓ | ✓ | |
+| **MP3, FLAC, ALAC, Vorbis** | ✓ | | Via the [symphonia](https://github.com/pdeljanov/Symphonia) crate (MPL-2.0) for now, to be replaced by our own |
+| **MP4 / MOV** | ✓ | ✓ | Fragmented MP4, edit lists, timecode tracks |
+| **Matroska / WebM** | ✓ | | Lacing, Cues, header stripping, HDR colour metadata |
+| **Stills** | ✓ | ✓ | Import PNG, JPEG, GIF, WebP, TIFF and BMP; export PNG sequences and animated GIF |
 
-## 정식 안정판 전에 필요한 수락 조건
+Also imported: MPEG-2 / MPEG-1 video, AC-3, MP2, MXF (OP1a / OP-Atom), MPEG transport and program streams (AVCHD, broadcast, DVD), Ogg and image sequences. Not yet: AV1 export, camera RAW, E-AC-3. Hardware decoding works on macOS (VideoToolbox), Windows (Media Foundation) and, for H.264 and HEVC, Linux (VA-API); H.264 export can use NVIDIA's encoder on Windows and Linux (opt-in), and H.265 (HEVC Main, 8-bit) export works through it (NVENC on Windows, VideoToolbox on macOS) ([#30](https://github.com/storytold/filmcraft/issues/30)).
 
-- [ ] Windows x64에서 앱 실행 및 주요 화면·메뉴 정상 표시
-- [ ] 문자 도구: `안녕하세요`, `한글 ABC 123`, `한한`, Backspace·Enter·방향키 정상
-- [ ] SRT/WebVTT 자막 가져오기 → 편집 → 저장 → 다시 열기
-- [ ] 한글 폰트·자막 외곽선·배경이 미리보기와 실제 영상에서 일치
-- [ ] Shorts 1080×1920 H.264/AAC MP4 출력·재생·프레임 및 오디오 검사
-- [ ] Windows 금지 경로는 거부, 정상 한글·UNC 경로는 적절히 처리
-- [ ] 후원/Discord 클릭 시 기본 브라우저 실제 열림 확인
-- [ ] NVIDIA 지원 GPU에서 NVENC 출력 성공, 불가 환경에서 CPU 대체 출력 확인
-- [ ] Windows 설치·업데이트·제거 시 프로젝트 및 설정 유지
-- [ ] 장시간 사용 시 메모리 누수·충돌·자동 복구 상태 확인
+<br>
 
-실제 검사 절차와 기록 항목: [`RC19_TEST_GUIDE_KO.md`](RC19_TEST_GUIDE_KO.md).
+## Export
 
-## 향후 개발 로드맵
+<p align="center">
+  <img src="docs/images/filmcraft-export.png" alt="Export mode: destinations for Media File, YouTube, Vimeo, TikTok, Instagram and FTP on the left, a Night of the Living Dead frame in the preview, and H.264 settings on the right (1440x1080 at 23.976 fps, 48000 Hz stereo, entire sequence)" width="100%">
+</p>
 
-> 아래 버전 구간과 기능은 **개발 목표**입니다. 확정된 출시 일정이나 구현 완료 선언이 아닙니다.
+<p align="center"><sub>Export mode, set to write the trailer as H.264 MP4.</sub></p>
 
-### RC20 이후 — Windows 한국어 UI 안정화
+- **H.264 MP4 with AAC, using our own encoders.** A 6-second 960×540 render takes 1.3 seconds and decodes in ffmpeg without a single warning, with strict error detection on.
+- **Also:** Apple ProRes 422 HQ and Motion JPEG in QuickTime, MXF OP1a and Avid-style OP-Atom (DNxHR, ProRes or H.264 with PCM and start timecode), PNG sequences, animated GIF and WAV.
+- **Background jobs** with progress and cancel, so you keep editing while it renders.
+- **Render previews:** the render bar marks segments green, yellow or red; rendered previews are cached by content, so an edit only invalidates what it touches and undo brings the green back.
 
-- [ ] 한글 IME 문자 도구의 첫 글자·조합·삭제·재편집 문제를 실제 Windows에서 검증 및 수정
-- [ ] 한글 폰트 폴백, 텍스트 커서/선택, 줄바꿈과 다양한 배율 안정화
-- [ ] 설치형/포터블 배포와 업그레이드·제거 검증
-- [ ] 자막 입력·영상 출력 전체 워크플로 회귀 테스트
-- [ ] 외부 링크 버튼과 오류 안내의 Windows 수동 검증
+<br>
 
-### GPU 인코딩 확장
+## Interchange
 
-- [ ] **AMD AMF H.264 자체 인코딩 경로 구현 및 UI 연동**
-- [ ] **Intel QSV H.264 자체 인코딩 경로 구현 및 UI 연동**
-- [ ] 지원 GPU·드라이버·코덱의 정확한 자동 판별
-- [ ] NVENC/AMF/QSV 실패 원인 표시 및 CPU 안전 대체 경로 검증
-- [ ] GPU별 H.264·HEVC 실제 출력 품질·속도·호환성 비교
-- [ ] GPU 합성·디코딩·인코딩 간 메모리 복사 비용 최적화
+Move timelines between FilmCraft and every other editor:
 
-### 영상 편집·자막·Shorts 고도화
+- **Final Cut Pro 7 XML (xmeml):** the format Premiere and DaVinci Resolve exchange. It carries nested sequences, transitions, generators, Motion, Opacity, Time Remap and audio levels, with keyframes.
+- **FCPXML 1.9–1.11:** the spine, connected clips as lanes, transitions, retiming and compound clips.
+- **OpenTimelineIO:** the open interchange format of the film industry, round-tripping every FilmCraft detail through `metadata.filmcraft`.
+- **CMX 3600 EDL:** the oldest format still in use, with drop-frame timecode, dissolves, wipes, speed changes (`M2`) and one EDL per track.
+- **AAF (Edit Protocol):** for Avid Media Composer and Pro Tools. Video and audio tracks, dissolves and dips, clip volume with keyframes, markers and source timecode; audio embedded or as separate WAV / AIFF files, trimmed with handles, with clip effects rendered in and broken out to mono, plus an optional video mixdown. Import reads AAF back, extracting embedded audio.
+- **OMF 2.0:** the audio-post handoff: the audio tracks with crossfades and gain, sample-accurate, with the audio encapsulated or alongside.
 
-- [ ] 긴 영상·고해상도 프로젝트의 미리보기 캐시·프록시 최적화
-- [ ] 플랫폼별 세로 영상 안전 영역과 화면비 변환 기능 개선
-- [ ] 다국어 자막 스타일 템플릿·일괄 편집 확대
-- [ ] 로컬 음성 인식 기반 자동 자막 기능 검토
-- [ ] 실사 촬영·스마트폰·화면 녹화 파일의 가져오기/편집/출력 회귀 코퍼스 확보
+Import merges the document's bins, media and sequences into your project as one undoable step, and links each media file it finds on disk.
 
-### v0.6.0 Stable — 정식 안정판 목표
+<br>
 
-- [ ] RC19 이후 핵심 기능의 Windows 실기기 수락 검사 통과
-- [ ] 실제 MP4 영상·음성·한글 자막 출력 검증 완료
-- [ ] 설치·업데이트·제거·프로젝트 데이터 보존 검증 완료
-- [ ] 오류·충돌 기록과 장시간 안정성 검사 완료
-- [ ] 릴리스 문서 및 사용자 안내 정리 후 정식 배포 여부 결정
+## Built for agents
 
-## 소스 구성
+Every menu item, button, slider and drag in FilmCraft is a **command** with an id, typed parameters and an enabled state. There are more than 650 engine commands (`filmcraft-cli commands` lists them), with the rest of Premiere's catalogue on the way. The UI, the CLI, a JSON control channel and an **MCP server** all dispatch the same commands, so Claude or any agent can cut, trim, grade, mix and export exactly the way a person does. The UI can also be driven at the level of mouse and keyboard: every widget has an automation id, and agents can click, drag, type and take screenshots.
 
-| 경로 | 역할 |
-| --- | --- |
-| `crates/ui-egui/` | 데스크톱 UI, 한국어 번역, 문자 도구, 내보내기 화면 |
-| `crates/ui-egui/src/panels/export_mode.rs` | RC19 Windows 출력 경로 검증 및 프리셋 확장자 처리 |
-| `crates/ui-egui/src/panels/graphics.rs` | 그래픽 문자 도구 및 IME 이벤트 처리 |
-| `crates/ui-egui/src/links.rs` | 후원·Discord 외부 링크 처리 |
-| `crates/engine/` | 편집 명령, 세션 및 내보내기 설정 연결 |
-| `crates/export/` | 내보내기 설정과 Shorts 프리셋 |
-| `crates/platform/` | 플랫폼 기능과 NVENC 경로 |
-| `crates/captions/`, `crates/text/` | 자막과 텍스트 처리 |
-| `scripts/check_rc19_features.py` | RC19 정적 회귀 검사 |
-| `scripts/rc19-windows-acceptance.ps1` | Windows 수락 검사 JSON 리포트 |
-| `RC19_TEST_GUIDE_KO.md` | RC19 수동 검증 항목 및 한계 |
-| `README-KOREAN.md` | 기존 한국어 패치 변경 내역 |
+```jsonc
+// over the control channel (JSON lines on TCP) or as MCP tool calls
+{"method": "engine.execute", "params": {"command": "timeline.place",
+  "params": {"item": 1, "track": "V1", "seconds": 0, "sourceIn": 284298240000000, "duration": 1270080000000}}}
+{"method": "engine.execute", "params": {"command": "effects.setParam",
+  "params": {"clip": 87, "effect": "lumetri", "param": "curve_luma", "value": [[0,0],[0.25,0.21],[0.75,0.82],[1,1]]}}}
+{"method": "ui.screenshot", "params": {"path": "frame.png"}}
+```
 
-## Windows 배포 상태
+The trailer and the grades in these screenshots were built exactly this way, by an agent driving the running app.
 
-RC19 소스에는 Inno Setup 기반 설치 패키징 설정과 포터블 압축 파일 제작 스크립트가 포함되어 있습니다. 계획된 배포 파일명은 아래와 같습니다.
+<br>
 
-- `FilmCraft_v0.6.0_RC19_Korean_Windows_x64_Setup.exe`
-- `FilmCraft_v0.6.0_RC19_Korean_Windows_x64_Portable.zip`
+## Everywhere
 
-각 산출물의 SHA-256 및 파일 구성 검사 코드도 포함되어 있습니다. **현재 분석한 소스 ZIP에는 완성된 설치 EXE/포터블 ZIP이 들어 있지 않으며**, 위 파일명은 제작 스크립트에 설정된 예상 산출물명입니다. 실행 또는 설치 성공을 의미하지 않습니다.
+- **Native** on macOS, Windows and Linux, with a native macOS menu bar.
+- **The web:** the same engine and UI run in the browser via WebAssembly (`apps/filmcraft-web`, see [docs/web.md](docs/web.md)); every release ships it as `filmcraft-web-<version>.zip`.
+- **Swappable UI.** The interface is one crate (`ui-egui`) over the engine, so a different front end can replace it without touching editing logic.
 
-## 관련 문서 및 커뮤니티
+<br>
 
-- [RC19 테스트·수락 기준](RC19_TEST_GUIDE_KO.md)
-- [RC18 테스트 안내](RC18_TEST_GUIDE_KO.md)
-- [RC16 릴리스 노트](RELEASE_NOTES_KO_v0.6.0_RC16.md)
-- [RC17 릴리스 노트](RELEASE_NOTES_KO_v0.6.0_RC17.md)
-- [한국어 패치 변경 이력](README-KOREAN.md)
-- [FilmCraft 원본 로드맵](ROADMAP.md)
-- [원본 저장소](https://github.com/storytold/filmcraft)
-- [ArtCraft Discord](https://discord.gg/artcraft)
-- [한국어 커뮤니티 패치 후원](https://ctee.kr/place/caw)
+## Get started
 
-## 라이선스와 출처
+```sh
+cargo run --release -p filmcraft                           # the desktop app, with a demo project
+cargo run --release -p filmcraft -- --control 9876         # plus the JSON-lines control server
+cargo run --release -p filmcraft-cli -- commands           # list every engine command
+cargo run --release -p filmcraft-cli -- mcp                # MCP server (headless)
+```
 
-원본 FilmCraft는 **MIT OR Apache-2.0** 듀얼 라이선스를 사용합니다. [`LICENSE-MIT`](LICENSE-MIT), [`LICENSE-APACHE`](LICENSE-APACHE), [`NOTICE`](NOTICE), [`ATTRIBUTION.md`](ATTRIBUTION.md)를 유지하고, 제3자 자료의 이용 조건을 확인해 주세요.
+Japanese text in the interface and in titles comes from [craft-fonts](https://github.com/storytold/craft-fonts), an optional build input (release builds always include it; without it FilmCraft uses its own and the system's fonts):
 
-- **원본 FilmCraft:** ArtCraft 팀 및 오픈소스 기여자
-- **RC19:** 비공식 한국어 커뮤니티 패치
-- **공식 여부:** ArtCraft 팀의 공식 한국어 릴리스가 아닙니다.
+```sh
+git clone https://github.com/storytold/craft-fonts ../craft-fonts
+CRAFT_FONTS_DIR="$PWD/../craft-fonts" cargo run --release -p filmcraft
+```
 
----
+The control protocol is documented in [docs/control-protocol.md](docs/control-protocol.md). Stuck, or want to show what you made? Ask in [Discord](https://discord.gg/artcraft).
 
-**문서 기준:** `FilmCraft_v0.6.0_RC19_Korean_PartialCompletion_Full_Source.zip`의 소스 코드와 `README-KOREAN.md`, `RC19_TEST_GUIDE_KO.md`, 정적 회귀 테스트. 본 문서는 **컴파일 방법을 포함하지 않으며**, 확인하지 않은 Windows 실기기 결과를 완료로 표기하지 않습니다.
+## Documentation
+
+| | |
+|---|---|
+| [CONTRIBUTING.md](CONTRIBUTING.md) · [docs/contributing.md](docs/contributing.md) | Setup, quality gates, commit conventions, how to add commands, effects, codecs, panels and assets |
+| [AGENTS.md](AGENTS.md) | The rules every contributor must follow: assets, clean room, licences |
+| [docs/architecture.md](docs/architecture.md) | Layers, data model, time base, command system, render and export pipeline |
+| [docs/testing.md](docs/testing.md) | Unit, property and ffmpeg-oracle tests, accuracy criteria, benchmarks |
+| [docs/agents.md](docs/agents.md) | Driving FilmCraft over MCP and the control channel; how agents develop it |
+| [docs/control-protocol.md](docs/control-protocol.md) | Control-channel and MCP reference |
+| [docs/project-files.md](docs/project-files.md) | `.fcproj` format, schema migrations, auto-save and crash recovery |
+| [docs/graphics.md](docs/graphics.md) · [docs/captions.md](docs/captions.md) | Text engine, graphic clips and tools; caption tracks and formats |
+| [ROADMAP.md](ROADMAP.md) | Honest assessment, what's missing, milestones and estimates |
+
+## Status
+
+FilmCraft is young and moving fast. Editing, trimming, multicam, colour, keyframes, effects, titles, captions, mixing, codecs and export work today.
+
+We track two numbers ([ROADMAP.md](ROADMAP.md#honest-assessment-2026-10-05)):
+
+- **Feature checklist: ~87%.** Premiere Pro's menu items, effects, transitions, panels and formats that exist in FilmCraft.
+- **Ready for real work: ~50–60%.** Our honest estimate of how close FilmCraft is to replacing Premiere on real projects.
+
+The biggest gaps today:
+
+- **Speed on big footage.** Hardware decoding works on macOS and Windows, and for H.264 and HEVC on Linux (VA-API, or NVDEC with NVIDIA's driver; VP9 and AV1 decode in software there). Blend modes and the most common effects run on the GPU, but Lumetri, keys and export rendering still run on the CPU; H.264 encoding can use the hardware encoder on macOS and on Windows and Linux with an NVIDIA GPU (opt-in, Export ▸ Hardware encoding), and H.265 export is hardware-only on both (HDR sequences export Main 10 PQ / HLG with NVENC; VideoToolbox writes 8-bit SDR) ([#30](https://github.com/storytold/filmcraft/issues/30)).
+- **No plugins.** No VST3 / Audio Units or OpenFX hosting.
+- **Delivery codecs.** H.264 is our only software delivery-codec export; H.265 exports only through a hardware encoder (NVIDIA on Windows: Main 8-bit SDR and Main 10 HDR PQ / HLG; VideoToolbox on macOS: 8-bit Main, SDR); no AV1 export yet.
+- **Real-world media and platforms.** Our decoders are bit-exact on conformance streams, but camera and phone files in the wild are less tested. Windows and Linux get far less testing than macOS.
+- **AI features.** Few so far; speech to text is optional and off by default.
+
+Bug reports with real footage are the most useful thing you can send us: [open an issue](https://github.com/storytold/filmcraft/issues) or tell us in [Discord](https://discord.gg/artcraft).
+
+## Architecture
+
+A layered Cargo workspace:
+
+| Layer | Crates |
+|---|---|
+| Codecs and containers | `h264`, `h264enc`, `hevc`, `vp9`, `prores`, `aac`, `opus`, `isobmff`, `matroska`, `bitstream` |
+| Foundations | `time`, `geom`, `color`, `frame`, `media`, `text`, `project`, `audio-dsp` |
+| Editing and interchange | `edit`, `codecs`, `captions`, `format` (project files), `interchange` |
+| Rendering and output | `render`, `gpu`, `export` |
+| Engine | `engine`: command registry, session, undo, jobs |
+| Front ends | `ui-egui`, `automation` (MCP), `apps/filmcraft`, `apps/filmcraft-cli` |
+| Test support | `testkit` (ffmpeg oracles, fixtures), `golden` (golden-image tests) |
+
+Nothing below the front ends depends on a UI toolkit or OS API. `cargo xtask ci` checks formatting, lints, tests, the layering rules, asset attribution and the wasm build.
+
+## Downloads
+
+**New to FilmCraft?** Download it from the [FilmCraft page on getartcraft.com](https://getartcraft.com/apps/filmcraft). That's the easiest way to install it.
+
+**Want a specific build or format?** On GitHub, the [latest release](https://github.com/storytold/filmcraft/releases/latest) has every build listed below, and [all releases](https://github.com/storytold/filmcraft/releases) has earlier versions and their notes. `<ver>` in the file names is the version number, and `SHA256SUMS.txt` lists a checksum for every file.
+
+### Windows
+
+| Build | Installer | Portable |
+|---|---|---|
+| x64 (64-bit Intel/AMD) | `filmcraft-<ver>-windows-x64.msi` | `filmcraft-<ver>-windows-x64-portable.zip` |
+| arm64 (Snapdragon and other ARM PCs) | `filmcraft-<ver>-windows-arm64.msi` | `filmcraft-<ver>-windows-arm64-portable.zip` |
+| x86 (32-bit) | `filmcraft-<ver>-windows-x86.msi` | `filmcraft-<ver>-windows-x86-portable.zip` |
+
+Installers and executables are code-signed.
+
+**If the app doesn't open on Windows:** the desktop app initializes only Vulkan and DirectX 12 by
+default, not OpenGL. Letting wgpu also create an OpenGL instance can crash some graphics drivers (AMD's
+`atio6axx.dll`) before the window appears, so the app would flash in Task Manager and quit.
+`WGPU_BACKEND` overrides the default for troubleshooting (for example `dx12` or `vulkan`). In
+PowerShell, from the folder containing the executable:
+
+```powershell
+$env:WGPU_BACKEND = "vulkan"
+& .\filmcraft.exe
+Remove-Item Env:WGPU_BACKEND                     # restore the default for later launches
+```
+
+An explicit `gl` override can bring the driver crash back on affected systems. The macOS, Linux
+and web backend defaults are unchanged.
+
+### macOS
+
+| Build | File | Notes |
+|---|---|---|
+| App, universal (Apple silicon + Intel) | `filmcraft-<ver>-macos-universal.dmg` | Signed and notarized |
+| Command-line tool, universal | `filmcraft-cli-<ver>-macos-universal.zip` | Signed and notarized |
+
+### Linux
+
+| Format | x86_64 | aarch64 (ARM64) | Notes |
+|---|---|---|---|
+| AppImage | `filmcraft-<ver>-linux-x86_64.AppImage` | `filmcraft-<ver>-linux-aarch64.AppImage` | Runs anywhere; updates itself with [AppImageUpdate](https://github.com/AppImageCommunity/AppImageUpdate) (`.zsync` files) |
+| Flatpak | `filmcraft-<ver>-linux-x86_64.flatpak` | `filmcraft-<ver>-linux-aarch64.flatpak` | Sandboxed; `flatpak install --user <file>` |
+| Debian/Ubuntu | `filmcraft-<ver>-linux-x86_64.deb` | `filmcraft-<ver>-linux-aarch64.deb` | |
+| Fedora/RHEL/openSUSE | `filmcraft-<ver>-linux-x86_64.rpm` | `filmcraft-<ver>-linux-aarch64.rpm` | |
+| Tarball | `filmcraft-<ver>-linux-x86_64.tar.gz` | `filmcraft-<ver>-linux-aarch64.tar.gz` | Unpack and run `./install.sh` |
+
+The tarball installer places FilmCraft, its command-line tool and desktop integration in
+`~/.local`, without administrator permissions. For all users, run
+`sudo ./install.sh --prefix /usr/local` instead. Running the installer again updates the installation.
+
+**Gentoo (community-maintained):** the [::snakebyte overlay](https://github.com/switch87/snakebyte-overlay)
+packages the Linux release as `media-video/filmcraft-bin`. It is maintained by the community, not by the
+FilmCraft team, so report packaging problems to the overlay:
+
+```sh
+eselect repository add snakebyte git https://github.com/switch87/snakebyte-overlay.git
+emaint sync -r snakebyte
+echo 'media-video/filmcraft-bin ~amd64' >> /etc/portage/package.accept_keywords/filmcraft
+emerge --ask media-video/filmcraft-bin
+```
+
+### FreeBSD
+
+| Build | File |
+|---|---|
+| x86_64 | `filmcraft-<ver>-freebsd-x86_64.tar.gz` |
+
+### Web (WebAssembly)
+
+| Build | File | Notes |
+|---|---|---|
+| Static site | `filmcraft-web-<ver>.zip` | Runs in a modern browser; host it on any static server |
+
+## The Crafting Apps
+
+FilmCraft is one of the **Crafting Apps**: free, open-source creative tools from the
+[ArtCraft](https://getartcraft.com/) team, each written from scratch in Rust and each able to
+stand on its own.
+
+| | App | What it's for | Code | Learn more |
+|:-:|---|---|---|---|
+| <img src="https://raw.githubusercontent.com/storytold/photocraft/main/assets/app-icon/hicolor/64x64/apps/ai.storyteller.photocraft.png" alt="" width="32" height="32"> | **PhotoCraft** | Image editing: layers, masks, type and real PSD files | [GitHub](https://github.com/storytold/photocraft) | [Website](https://getartcraft.com/apps/photocraft) |
+| <img src="https://raw.githubusercontent.com/storytold/vectorcraft/main/assets/app-icon/hicolor/64x64/apps/ai.storyteller.vectorcraft.png" alt="" width="32" height="32"> | **VectorCraft** | Vector illustration | [GitHub](https://github.com/storytold/vectorcraft) | [Website](https://getartcraft.com/apps/vectorcraft) |
+| <img src="https://raw.githubusercontent.com/storytold/filmcraft/main/assets/app-icon/hicolor/64x64/apps/ai.storyteller.filmcraft.png" alt="" width="32" height="32"> | **FilmCraft** | **Video editing, color and sound · you are here** | [GitHub](https://github.com/storytold/filmcraft) | [Website](https://getartcraft.com/apps/filmcraft) |
+| <img src="https://raw.githubusercontent.com/storytold/lightcraft/main/assets/app-icon/hicolor/64x64/apps/ai.storyteller.lightcraft.png" alt="" width="32" height="32"> | **LightCraft** | Photo library and raw development | [GitHub](https://github.com/storytold/lightcraft) | [Website](https://getartcraft.com/apps/lightcraft) |
+| <img src="https://raw.githubusercontent.com/storytold/pdfcraft/main/assets/app-icon/hicolor/64x64/apps/ai.storyteller.pdfcraft.png" alt="" width="32" height="32"> | **PdfCraft** | Reading, organizing and protecting PDFs | [GitHub](https://github.com/storytold/pdfcraft) | [Website](https://getartcraft.com/apps/pdfcraft) |
+| <img src="https://raw.githubusercontent.com/storytold/effectcraft/main/assets/app-icon/hicolor/64x64/apps/ai.storyteller.effectcraft.png" alt="" width="32" height="32"> | **EffectCraft** | Motion graphics and visual effects | [GitHub](https://github.com/storytold/effectcraft) | [Website](https://getartcraft.com/apps/effectcraft) |
+| <img src="https://raw.githubusercontent.com/storytold/designcraft/main/assets/app-icon/hicolor/64x64/apps/ai.storyteller.designcraft.png" alt="" width="32" height="32"> | **DesignCraft** | Page layout and publishing | [GitHub](https://github.com/storytold/designcraft) | [Website](https://getartcraft.com/apps/designcraft) |
+
+And [**ArtCraft**](https://getartcraft.com/) itself, our AI image and video studio for artists who want real control.
+
+<br>
+
+<p align="center">
+  <a href="https://discord.gg/artcraft"><img alt="Join the ArtCraft community on Discord" src="https://img.shields.io/badge/Join%20us%20on%20Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white" height="40"></a>
+</p>
+
+<h3 align="center">Come make things with us</h3>
+
+<p align="center">
+  Our Discord is where artists of every kind hang out: people who paint, shoot, draw, cut film,
+  set type, and people still figuring out what they like to make. Share what you're working on,
+  ask for help, tell us what's broken, or tell us what you wish these tools could do.
+  Whatever your medium and however long you've been at it, you're welcome here.
+</p>
+
+<p align="center">
+  <a href="https://discord.gg/artcraft"><b>discord.gg/artcraft</b></a> ·
+  <a href="https://getartcraft.com/">getartcraft.com</a> ·
+  <a href="https://getartcraft.com/apps">The Crafting Apps</a> ·
+  <a href="https://getartcraft.com/apps/filmcraft">FilmCraft</a>
+</p>
+
+<br>
+
+## License and credits
+
+FilmCraft is dual-licensed under [MIT](LICENSE-MIT) or [Apache-2.0](LICENSE-APACHE), at your option.
+Copyright (c) 2026 ArtCraft Team and the FilmCraft contributors. Required notices are in [NOTICE](NOTICE).
+
+Bundled fonts, icons, images and other assets keep their own open licenses; each one is listed
+with its author, source and license in [ATTRIBUTION.md](ATTRIBUTION.md). Builds made with
+[craft-fonts](https://github.com/storytold/craft-fonts) (all official releases) also embed its fonts
+(OFL-1.1), listed in its [ATTRIBUTION.md](https://github.com/storytold/craft-fonts/blob/main/ATTRIBUTION.md).
+
+**Footage and music in the screenshots:** NASA's Apollo 11 film and television footage from [images.nasa.gov](https://images.nasa.gov) (launch, Launch Control Center, lunar surface and recovery) and the Apollo 11 air-to-ground voice transcript, all US Government works in the public domain (NASA does not endorse this project); *Night of the Living Dead* (1968), *Carnival of Souls* (1962) and *Charade* (1963), all in the US public domain; *Earth Views from the ISS* by NASA; Chopin's Nocturne Op. 48 No. 1 and Ballade No. 1, performed for Musopen and released under CC0. The media itself is not in this repository. Sources and details for every asset are in [ATTRIBUTION.md](ATTRIBUTION.md).
+
+FilmCraft is an independent implementation. It contains no Adobe code, icons, images, presets or LUTs, and no GPL or LGPL code; every icon is drawn in code and every asset is openly licensed and attributed ([AGENTS.md](AGENTS.md)), apart from the ArtCraft name and logos, which are trademarks of the ArtCraft Team used under [`docs/brand/LICENSE-brand.txt`](docs/brand/LICENSE-brand.txt). ffmpeg is used only as an external test oracle.
+
+The ArtCraft name, wordmark and logos in [`docs/brand/`](docs/brand/) are trademarks of the
+ArtCraft Team and are not covered by this license. They may be used only unmodified, and only as
+part of this repository and FilmCraft, under [`docs/brand/LICENSE-brand.txt`](docs/brand/LICENSE-brand.txt).
+Forks and modified versions must remove them.
+
+<sub>Adobe, Photoshop, Illustrator, Premiere Pro, Lightroom, Acrobat, After Effects and InDesign are trademarks or registered trademarks of Adobe Inc. in the United States and/or other countries. FilmCraft is an independent, open-source project and is not affiliated with, sponsored by or endorsed by Adobe Inc.; these names are used only to describe the workflows it is compatible with.</sub>
+
+<br>
+
+<p align="center">
+  <a href="https://getartcraft.com/"><img alt="ArtCraft" src="docs/brand/artcraft-mark.svg" width="28"></a><br>
+  <sub>Made by the <a href="https://getartcraft.com/">ArtCraft</a> team and community.</sub>
+</p>
+
+## Star history
+
+[![Star History Chart](https://api.star-history.com/svg?repos=storytold/filmcraft&type=Date&legend=top-left)](https://www.star-history.com/?repos=storytold%2Ffilmcraft&type=date&legend=top-left)

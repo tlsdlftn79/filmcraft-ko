@@ -1,0 +1,57 @@
+name: FilmCraft Korean Windows Stable (manual)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  windows-stable:
+    runs-on: windows-2022
+    timeout-minutes: 180
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Install Python for localization and release checks
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Rust MSVC toolchain
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: x86_64-pc-windows-msvc
+      - name: Check Windows Rust host
+        shell: pwsh
+        run: |
+          rustc --version
+          rustc -vV
+      - name: Install Inno Setup compiler
+        shell: pwsh
+        run: choco install innosetup --yes --no-progress
+      - name: Localization, Unicode and Rust tests
+        shell: cmd
+        run: call TEST.cmd
+      - name: Compile Windows release
+        shell: cmd
+        run: call BUILD.cmd
+      - name: Package portable release
+        shell: cmd
+        run: call PACKAGE.cmd
+      - name: Compile installation wizard
+        shell: cmd
+        run: call INSTALL.cmd -SkipBuild
+      - name: Verify checksums and release contents
+        shell: cmd
+        run: call VERIFY.cmd
+      - name: Upload unsigned Stable packaging artifacts (manual tests required)
+        uses: actions/upload-artifact@v4
+        with:
+          name: FilmCraft_v0.6.0_Stable_Korean_Windows_x64
+          path: |
+            dist/FilmCraft_v0.6.0_Stable_Korean_Windows_x64_Portable.zip
+            dist/FilmCraft_v0.6.0_Stable_Korean_Windows_x64_Portable.zip.sha256
+            dist/FilmCraft_v0.6.0_Stable_Korean_Windows_x64_Setup.exe
+            dist/FilmCraft_v0.6.0_Stable_Korean_Windows_x64_Setup.exe.sha256
+            dist/FilmCraft_v0.6.0_Stable_RELEASE_MANIFEST.json
+          if-no-files-found: error
