@@ -1,0 +1,23 @@
+[package]
+name = "filmcraft-captions"
+description = "FilmCraft captions: SRT, WebVTT, SCC, MCC, EBU STL and TTML/IMSC1/DFXP import/export, caption layout and burn-in rasterisation"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[lints]
+workspace = true
+
+[dependencies]
+filmcraft-time = { workspace = true }
+filmcraft-color = { workspace = true }
+filmcraft-project = { workspace = true }
+filmcraft-text = { workspace = true }
+thiserror = { workspace = true }
+roxmltree = { workspace = true }
+unicode-segmentation = "1.13"
+encoding_rs = "0.8.42"
+
+[dev-dependencies]
+proptest = { workspace = true }

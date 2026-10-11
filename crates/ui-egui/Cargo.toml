@@ -1,0 +1,59 @@
+[package]
+name = "filmcraft-ui-egui"
+description = "The FilmCraft egui frontend (swappable): panels, docking, timeline, monitors, control channel"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[lints]
+workspace = true
+
+[dependencies]
+filmcraft-time = { workspace = true }
+filmcraft-geom = { workspace = true }
+filmcraft-color = { workspace = true }
+filmcraft-frame = { workspace = true }
+filmcraft-media = { workspace = true }
+filmcraft-project = { workspace = true }
+filmcraft-tts = { workspace = true }
+filmcraft-edit = { workspace = true }
+filmcraft-render = { workspace = true }
+filmcraft-text = { workspace = true }
+filmcraft-audio-dsp = { workspace = true }
+filmcraft-engine = { workspace = true }
+filmcraft-export = { workspace = true }
+filmcraft-gpu = { workspace = true }
+filmcraft-scopes = { workspace = true }
+egui = { workspace = true }
+eframe = { workspace = true, features = ["default_fonts", "wgpu", "accesskit"] }
+serde = { workspace = true }
+serde_json = { workspace = true }
+log = { workspace = true }
+rayon = { workspace = true }
+web-time = "1"
+# Delete/move text by Unicode extended grapheme cluster (Hangul/Jamo/emoji).
+unicode-segmentation = "1.13"
+# ArtCraft wordmark (PNG) for the About dialog and Home screen.
+image = { version = "0.25", default-features = false, features = ["png"] }
+
+# Thread/process CPU clocks for frame-job profiling (safe wrappers; see frames.rs).
+[target.'cfg(unix)'.dependencies]
+rustix = { version = "1", default-features = false, features = ["std", "time"] }
+# the same clocks on Windows (GetThreadTimes / GetProcessTimes behind a safe API; MIT OR Apache-2.0)
+[target.'cfg(windows)'.dependencies]
+cpu-time = "1"
+
+[dev-dependencies]
+pollster = "0.4"
+filmcraft-codecs = { workspace = true }
+# the bench registers OS hardware decoders as the desktop app does (dev-dependency only: ui-egui
+# itself stays OS-independent and web-portable)
+filmcraft-platform = { workspace = true }
+filmcraft-interchange = { workspace = true }
+egui_kittest = { workspace = true, features = ["eframe", "wgpu"] }
+
+# build.rs bakes contributors/contributors.json into the binary (About ▸ Contributors).
+[build-dependencies]
+serde_json = { workspace = true }
+toml = "1"

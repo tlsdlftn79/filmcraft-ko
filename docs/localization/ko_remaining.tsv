@@ -1,0 +1,881 @@
+context	English source
+	 · {time} left
+	% of all commits
+	105mm Prime
+	35mm Prime
+	3D Roll
+	3D Rotate
+	3D Spin
+	3D Spinback
+	4-Color Gradient
+	5.1 Media
+	5.1 Mixdown Type
+	50-300mm Zoom
+	A boxed label with a round pointer; move the label and the pointer follows.
+	A news-style line that crawls in from the right and leaves at the left.
+	A rounded tag that fits its text, with a status dot.
+	A title on a rounded card with a soft shadow.
+	AIFF
+	AIFF 48 kHz 16-bit
+	AIFF, stereo 48 kHz 16-bit PCM
+	APV
+	APV 422-10
+	APV 422-12
+	ASC CDL
+	Accent Color
+	Add keyframe
+	Anamorphic 2:1 (2.0)
+	Animated GIF
+	Animated GIF 640×360
+	Appearance Mode
+	Apple ProRes
+	Apple ProRes 422
+	Apple ProRes 422 HQ
+	Apple ProRes 422 LT
+	Apple ProRes 422 Proxy
+	Application
+	Audio output failed: playing without sound (check Settings ▸ Audio Hardware)
+	Audio output is not responding: playing without sound (check Settings ▸ Audio Hardware)
+	Auto Save Now
+	Auto Tone Map Media (HDR and log into SDR)
+	Auto-Match Loudness
+	Avid DNxHR
+	Avid DNxHR HQ
+	Avid DNxHR LB
+	Avid DNxHR SQ
+	Avid-style OP-Atom: DNxHR HQ picture file plus one 24-bit 48 kHz PCM file per channel (_A1, _A2…)
+	BMP
+	BMP Sequence
+	Bar Color
+	Baseline
+	Begin Text Editing for a Graphic Layer
+	Begins With
+	Binary assets added
+	Binary assets removed
+	Brightens inside a feathered circular mask
+	Broadcast
+	CBR
+	CEA-608
+	CEA-708
+	Callout – Pointer
+	Callout – Tag
+	Callouts
+	Cancel Dynamic Trim
+	Cancel Queued Export
+	Captured View:
+	Center align text
+	Centred credits that roll up from below the frame and leave at the top.
+	Clear All Events
+	Clear Edit Point Selection
+	Clear Finished Exports
+	Clear Poster Frame
+	Click to select, or click in empty space and drag to marquee select. Use Shift, Alt, and Ctrl for other options.
+	Click to zoom in; Alt-click to zoom out.
+	Client
+	Clip Speed / Duration
+	Close Bin
+	Commits
+	Company
+	Composite in Linear Color
+	Composite on the GPU when available
+	Configure…
+	Contains
+	Credits
+	Custom ({ratio})
+	Cut to Camera 1
+	Cut to Camera 2
+	Cut to Camera 3
+	Cut to Camera 4
+	Cut to Camera 5
+	Cut to Camera 6
+	Cut to Camera 7
+	Cut to Camera 8
+	Cut to Camera 9
+	D1/DV NTSC (0.9091)
+	D1/DV PAL (1.0940)
+	DVCPRO HD (1.5)
+	Dark Theme
+	Darkens outside a feathered oval mask
+	Decrease Audio Tracks Height
+	Decrease Clip Volume Many
+	Decrease Font Size by Five Units
+	Decrease Font Size by One Unit
+	Decrease Leading by Five Units
+	Decrease Leading by One Unit
+	Decrease Video Tracks Height
+	Deselect All Project Items
+	Discard take
+	Display name
+	Does Not Contain
+	Dot Color
+	Drag: move · Alt-click: smooth/corner · Ctrl-click: delete
+	Dutch
+	Edit Narration
+	Editing Mode:
+	Encoder
+	End Credits
+	End Credits – Roll
+	EssentialSound
+	Export Markers as CSV…
+	Extend Next Edit To Playhead
+	Extend Previous Edit To Playhead
+	Extend Selected Edit to Playhead
+	Extend Selection Down
+	Extend Selection Left
+	Extend Selection Right
+	Extend Selection Up
+	Fields:
+	FilmCraft always composites in linear light
+	First commit
+	GB
+	GPU Rendering
+	Gaussian Blur from 0 to 60 over the last second
+	Gaussian Blur from 60 to 0 over the first second
+	Generate Ducking Keyframes
+	Go to Next Edit Point
+	Go to Next Edit Point on Any Track
+	Go to Previous Edit Point
+	Go to Previous Edit Point on Any Track
+	Go to Selected Clip End
+	Go to Selected Clip Start
+	Go to Sequence End
+	Go to Sequence Start
+	Go to next keyframe
+	Go to previous keyframe
+	Grab bag
+	H.264
+	H.264 1920×1080 for video sharing sites, VBR 1 pass, 16 Mbps
+	H.264 1920×1080, VBR 1 pass, 20 Mbps target, AAC 320 kbps
+	H.264 1920×1080, VBR 2 pass, 18 Mbps
+	H.264 3840×2160 for video sharing sites, VBR 1 pass, 45 Mbps
+	H.264 3840×2160, VBR 1 pass, 60 Mbps target, AAC 320 kbps
+	H.264 3840×2160, VBR 2 pass, 50 Mbps
+	H.264 9:16 portrait for short-form social video, scaled to fill, 12 Mbps
+	H.264 at the sequence's frame size and rate; 0.05 bits per pixel
+	H.264 at the sequence's frame size and rate; 0.1 bits per pixel
+	H.264 at the sequence's frame size and rate; bitrate adapts to the frame size (0.2 bits per pixel)
+	H.265 (HEVC)
+	HD Anamorphic 1080 (1.333)
+	Hardware (H.265 has no software encoder)
+	Hardware decoding: Auto uses the system's video decoder (VideoToolbox on macOS, Media Foundation on Windows, VA-API or NVDEC for H.264 and HEVC on Linux) for the streams it supports, and FilmCraft's own decoder for everything else or if the hardware fails. Media that is already open keeps its decoder until it is reopened.
+	Heading
+	High Quality 1080p HD
+	High Quality 2160p 4K
+	In
+	Include Alpha Channel
+	Increase Audio Tracks Height
+	Increase Clip Volume Many
+	Increase Font Size by Five Units
+	Increase Font Size by One Unit
+	Increase Leading by Five Units
+	Increase Leading by One Unit
+	Increase Video Tracks Height
+	Inter
+	JetBrains Mono
+	Large blocks resolving to the picture over the first second
+	Large centred title, accent rule and subtitle.
+	Last commit
+	Layout:
+	Left align text
+	Light Theme
+	Line delta
+	Lines +/−
+	Lines added
+	Lines deleted
+	Loop marked range
+	Looping GIF, 640×360 at 15 fps
+	Lower Third – Rule
+	Lower Third – Slab
+	Lower Thirds
+	Lumetri
+	MB
+	MXF OP-Atom
+	MXF OP-Atom DNxHR (Avid)
+	MXF OP1a
+	MXF OP1a DNxHR HQ
+	MXF OP1a H.264
+	MXF OP1a ProRes 422 HQ
+	MXF OP1a, DNxHR HQ (8-bit 4:2:2), 24-bit 48 kHz PCM, start timecode
+	MXF OP1a, H.264 High long GOP (0.3 bits per pixel), 24-bit 48 kHz PCM
+	MXF OP1a, ProRes 422 HQ, 24-bit 48 kHz PCM, start timecode
+	Main
+	Main (8-bit)
+	Main (8-bit; Main 10 for HDR sequences)
+	Main 10 (10-bit, HDR)
+	Mango
+	Mark In (Hover Scrub)
+	Mark Out (Hover Scrub)
+	Match Source – Adaptive High Bitrate
+	Match Source – Adaptive Low Bitrate
+	Match Source – Adaptive Medium Bitrate
+	Matches
+	Maximize or Restore Active Frame
+	Maximize or Restore Frame Under Cursor
+	Maximum Bit Depth
+	Maximum Render Quality
+	MediaBrowser
+	MediaCache
+	Merged PRs
+	Mixer
+	Model
+	Models
+	Mosaic In
+	Move All Audio Targets Down
+	Move All Audio Targets Up
+	Move All Video Targets Down
+	Move All Video Targets Up
+	Move Selection Home
+	Multi-Camera Record On/Off Toggle
+	Multicam
+	Name (A–Z)
+	Name and role on a coloured slab that widens with the name.
+	Name over a thin rule that always matches the name's width.
+	Navigate to End of Segment
+	Navigate to Next Line
+	Navigate to Next Word
+	Navigate to Previous Line
+	Navigate to Previous Word
+	Navigate to Start of Segment
+	Navigation
+	Next Multi-Camera Page
+	No Fields (Progressive Scan)
+	No contributor data was built into this copy.
+	No model credits were built into this copy.
+	Noise (Legacy)
+	Noise Reduction/Restoration
+	Non-Additive Dissolve
+	Normal
+	Not supported in FilmCraft yet
+	Notch 1
+	Notch 2
+	Notch 3
+	Notch 4
+	Notch 5
+	Notch 6
+	Notch Filter
+	Notch Width
+	Nudge Clip Selection Down
+	Nudge Clip Selection Left Five Frames
+	Nudge Clip Selection Left One Frame
+	Nudge Clip Selection Right Five Frames
+	Nudge Clip Selection Right One Frame
+	Nudge Clip Selection Up
+	Nudge Selected Object down by five
+	Nudge Selected Object down by one
+	Nudge Selected Object to left by five
+	Nudge Selected Object to left by one
+	Nudge Selected Object to right by five
+	Nudge Selected Object to right by one
+	Nudge Selected Object up by five
+	Nudge Selected Object up by one
+	Nudge Volume +1dB
+	Nudge Volume +3dB
+	Nudge Volume -1dB
+	Nudge Volume -3dB
+	Number Of Echoes
+	Number of Channels:
+	Number of Harmonics
+	Numbered BMP stills (24-bit)
+	Numbered PNG stills at the sequence's frame size
+	Numbered TIFF stills (RGB, 8-bit)
+	Obsolete
+	Octagon
+	Offset
+	Offset (Turbulence)
+	Offset From
+	Offset To
+	Omni
+	Opacity 0 → 100 % over the first second
+	Opacity 100 → 0 % over the last second
+	Open Air
+	Open Bin
+	Open Search
+	Opens up the shadows
+	Out
+	PNG
+	PNG Sequence
+	Pan (Y Axis)
+	Panel
+	Panels
+	Panner - Ambisonics
+	Parade
+	Parade (RGB)
+	Paragraph Text
+	Parametric Equalizer
+	Passband Ripple
+	Path Points
+	Pause Media Encoder queue during playback
+	Pedestal
+	Pentagon
+	Per line
+	Percent Blur
+	Perspective
+	Phase Difference
+	Phaser
+	Phone Call
+	Phosphor
+	Phosphor Color
+	Photocopy
+	Photocopy Color
+	PiP 35% Upper Right
+	Picture-in-picture: 35 % scale in the upper right
+	Pillow
+	Pinning
+	Pitch Shifter
+	Pixel Aspect Ratio:
+	Plate
+	Plateau Wipe
+	Plateaus
+	Plates
+	Play In to Out with Preroll/Postroll
+	Play after rendering previews
+	Play audio while scrubbing in Source and Program Monitors
+	Play from Playhead to Out Point
+	Playhead position determines trim monitor loop playback
+	Podcast Voice
+	Point 1
+	Point 1 Color
+	Point 1 Latitude
+	Point 1 Longitude
+	Point 2
+	Point 2 Color
+	Point 2 Latitude
+	Point 2 Longitude
+	Point 3
+	Point 3 Color
+	Point 3 Latitude
+	Point 3 Longitude
+	Point 4
+	Point 5
+	Point 6
+	Point 7
+	Point 8
+	Pointer Color
+	Points
+	Policy
+	Pop Motion
+	Position & Rotation
+	Position, Scale & Rotation
+	Position, Scale, Rotation
+	Posterize
+	Posterize Time
+	Pre-Delay
+	Prefix
+	Presence Lift
+	Preserve Luminosity
+	Preserve Scale
+	Previous Multi-Camera Page
+	ProcAmp
+	Progressive
+	ProjectPanel
+	Projecting cap
+	Projection:
+	Projects
+	Pull Motion
+	Pulls highlights and whites down
+	Push
+	Push (Legacy)
+	Q
+	QuickTime (Motion JPEG)
+	QuickTime, APV 422-10 (10-bit 4:2:2), 24-bit 48 kHz PCM
+	QuickTime, APV 422-12 (12-bit 4:2:2), 24-bit 48 kHz PCM
+	QuickTime, DNxHR HQ (8-bit 4:2:2), 24-bit 48 kHz PCM
+	QuickTime, DNxHR LB (8-bit 4:2:2), 24-bit 48 kHz PCM
+	QuickTime, DNxHR SQ (8-bit 4:2:2), 24-bit 48 kHz PCM
+	QuickTime, ProRes 422 HQ, 24-bit 48 kHz PCM
+	QuickTime, ProRes 422 LT, 24-bit 48 kHz PCM
+	QuickTime, ProRes 422 Proxy, 24-bit 48 kHz PCM
+	QuickTime, ProRes 422, 24-bit 48 kHz PCM
+	Quit FilmCraft
+	RAM reserved for other applications
+	RGB
+	RGB-White
+	Radial
+	Radial Ramp
+	Radial Wipe (Legacy)
+	Radio Announcer
+	Radio Voice
+	Radius
+	Ramp
+	Ramp Shape
+	Random
+	Random Seed
+	Range
+	Ray
+	Ray Color
+	Ray Length
+	Rays
+	Rays Only
+	Read
+	Real name
+	Rec. 2100
+	Rec. 601
+	Rec. 709
+	Red Blurriness
+	Red Curve
+	Red Slope
+	Red-Blue
+	Red-Const
+	Red-Green
+	Red-Red
+	Reduce Axis
+	Reduce Interlace Flicker
+	Reflected
+	Reflection Angle
+	Reflection Center
+	Refraction
+	Reframe Offset
+	Reframe Zoom
+	Refresh growing Files Every
+	Relaxed
+	Release Time
+	Relief
+	Remaining
+	Remove Fringe
+	Remove keyframe
+	Render Edit in Audition files to:
+	Render audio when rendering video
+	Repair
+	Repeat Edge Pixels
+	Replace Color
+	Replace With Clip From Source Monitor
+	Replicate
+	Responsive Design - Position
+	Responsive Design - Time
+	Restore open sequences when opening projects
+	Result
+	Retro
+	Reveal Nested Sequence
+	Reveal Original Image
+	Reveal in Project
+	Reverb Amount
+	Reverse
+	Reverse Speed
+	Reverse the order
+	Right - Left
+	Right - Right
+	Right align text
+	Right channel to device output
+	Right to left
+	Ripple Edit, Shifting Trailing Clips
+	Ripple Trim Next Edit to Playhead
+	Ripple Trim Previous Edit to Playhead
+	Ripple trim adds edits to keep both sides of trim in sync
+	Role
+	Roll (Z Axis)
+	Roughen
+	Roughen Color
+	Roughen Edges
+	Round cap
+	Round join
+	Rounded Crop
+	Rows
+	Rule Color
+	Russian
+	Rusty
+	Rusty Color
+	SFX
+	Saturation at 50 %
+	Save .cfa and .pek media cache files next to original media files when possible
+	Scale (Degrees)
+	Scale From
+	Scale To
+	Scale motion effects proportionally when changing frame size
+	Scale to frame size
+	Scan Lines
+	Scene
+	Scientific Filter
+	Scratch disk location for Captured Audio
+	Screen
+	Seconds
+	Segments
+	Select All Project Items
+	Select Camera 1
+	Select Camera 2
+	Select Camera 3
+	Select Camera 4
+	Select Camera 5
+	Select Camera 6
+	Select Camera 7
+	Select Camera 8
+	Select Camera 9
+	Select Clip at Playhead
+	Select Find Box
+	Select an item to preview it
+	Select to Next Line
+	Select to Next Word
+	Select to Previous Line
+	Select to Previous Word
+	Select to Segment End
+	Select to Segment Start
+	Semi-tones
+	Set Comparison Reference
+	Set Creative Look
+	Set Input LUT
+	Set Project Panel View
+	Set Transition Duration
+	Set focus on the Timeline when performing Insert/Overwrite edits
+	Set to frame size
+	Setting
+	Shadow Distance
+	Shadows Lightness
+	Shake
+	Shape Flow
+	Shapes
+	Shard Size
+	Sharp Colors
+	Sharpen Amount
+	Shift Center To
+	Shift clips that overlap trim point during ripple trimming
+	Shot
+	Show "Project:" and "Bin:" in Project panel tab
+	Show Clip Mismatch Warning dialog
+	Show Dot
+	Show Event Indicator
+	Show Home
+	Show Mask Tracker Preview
+	Show Open Dialog
+	Show Program Transcript
+	Show Project Load Error Dialog
+	Show Rich Tool Tips
+	Show Role
+	Show Workspace Reset Warning dialog on double click
+	Show system compatibility issues at startup
+	Shrink
+	Shutter Angle
+	Similarity
+	Simple Notch Filter
+	Simple Parametric EQ
+	Simple Text
+	Single-band Compressor
+	Sinusoidal
+	Skew
+	Skew Axis
+	Slab Color
+	Slats
+	Slice
+	Slices
+	Slide
+	Slide (Legacy)
+	Slide Clip Selection Left Five Frames
+	Slide Clip Selection Left One Frame
+	Slide Clip Selection Right Five Frames
+	Slide Clip Selection Right One Frame
+	Slip Clip Selection Left Five Frames
+	Slip Clip Selection Left One Frame
+	Slip Clip Selection Right Five Frames
+	Slip Clip Selection Right One Frame
+	Slope
+	Slower Motion
+	Small Room
+	Smart Limit
+	Smart Tools
+	Smart quotes
+	Smooth
+	Smooth Scroll
+	Smoothness
+	Snap playhead in Timeline when Snap is enabled
+	Social Vertical 1080×1920
+	Soft
+	Soft Clamp
+	Soft Edges (Best Quality)
+	Soft Vignette
+	Soften Harshness
+	Softness
+	Solarize
+	Solid
+	Solid Colors
+	Sort
+	Source In/Out
+	Spacer
+	Speaker Labeling
+	Special
+	Spherize
+	Spiky
+	Spill
+	Spill Suppression
+	Split (Legacy)
+	Square Pixels (1.0)
+	Stack Clips
+	Start Export Queue
+	Start with an Empty Project
+	Starting Intensity
+	Static Plates
+	Step Back Five Frames
+	Step Back One Frame
+	Step Forward Five Frames
+	Step Forward One Frame
+	Step forward/back many
+	Stereo Expand
+	Stereo Expander
+	Stereo Imagery
+	Stereo Phasing
+	Stereoscopic - Over/Under
+	Stereoscopic - Side by Side
+	Still
+	Still Image Default Duration
+	Stone Church
+	Stop Export Queue
+	Stop Multi-Camera Recording
+	Stopband Attenuation
+	Straight Color
+	Strength
+	Stretch
+	Stretch Gradient to Fit
+	Stretch Map to Fit
+	Stretch Width or Height
+	Stretch to Fit Frame
+	Stripe
+	Stripes
+	Strobe Color
+	Strobe Duration (secs)
+	Strobe Light
+	Strobe Period (secs)
+	Stroke 2 Color
+	Stroke 2 Type
+	Stroke 2 Width
+	Stroke Density
+	Stroke Length
+	Stroke Length (secs)
+	Stroke Randomness
+	Stroke line cap
+	Stroke line join
+	Studio Reverb
+	Stylize
+	Subspace Warp
+	Subtract
+	Sum multichannel outputs to mono in Source Monitor
+	Super Narrow
+	Surface Gloss
+	Surface Material
+	Surround Reverb
+	Swap
+	Swap Channels
+	Swivel
+	Sync Voice-over Capture
+	Synthetic
+	TIFF
+	TIFF Sequence
+	TV Power
+	Table
+	Tag Color
+	Tape
+	Tape Name
+	Tape/Tube
+	Target Aspect
+	Target Color
+	Target Field of View
+	Target Loudness
+	Teal & Orange
+	Telephone
+	Teletext
+	Text Animator
+	Text Styling
+	Text to Speech
+	TextPanel
+	The language changed but could not be saved: {e}
+	The media cache holds render previews of unsaved projects and other files FilmCraft can recreate. Deleting them is always safe; FilmCraft rebuilds them as needed.
+	Thickness
+	Thumbnail Size Next
+	Thumbnail Size Previous
+	Ticker – Crawl
+	Tile Gradient
+	Tilt
+	Tilt (X Axis)
+	Time and Pitch
+	Timebase:
+	Timecode Conversion
+	Timeline Mouse Scrolling
+	Timeline Playback Auto-Scrolling
+	Title – Boxed
+	Title – Centered
+	To
+	Toggle All Audio Targets
+	Toggle All Video Targets
+	Toggle Audio During Scrubbing
+	Toggle Full Screen
+	Toggle Mute for All Targeted Audio Tracks
+	Toggle Solo for All Targeted Audio Tracks
+	Toggle Source/Program Monitor Focus
+	Toggle Target Audio 1
+	Toggle Target Audio 2
+	Toggle Target Audio 3
+	Toggle Target Audio 4
+	Toggle Target Audio 5
+	Toggle Target Audio 6
+	Toggle Target Audio 7
+	Toggle Target Audio 8
+	Toggle Target Video 1
+	Toggle Target Video 2
+	Toggle Target Video 3
+	Toggle Target Video 4
+	Toggle Target Video 5
+	Toggle Target Video 6
+	Toggle Target Video 7
+	Toggle Target Video 8
+	Toggle Track Output for All Targeted Video Tracks
+	Toggle Trim Type
+	Tolerance
+	Tone
+	Touch
+	Transcription
+	Transcription preferences
+	Transformers
+	Transience
+	Transition Completion
+	Transition Softness
+	Transparency
+	Trash
+	Travel Motion
+	Treble
+	Triangle
+	Trim Next Edit to Playhead
+	Trim Previous Edit to Playhead
+	Trimming
+	Tube
+	Tube-modeled Compressor
+	Tubular
+	Turbulent
+	Turbulent Displace
+	Turbulent Sharp
+	Turbulent Smooth
+	Turbulent Smoother
+	Turn on animation and add keyframe
+	Tweed
+	Twirl
+	Twirl (Legacy)
+	Twirl Center
+	Twirl Radius
+	Twist
+	Twist Smoother
+	Typewriter
+	Ultra Key
+	Uniform Scale
+	Uniform Spacing
+	Unsharp Mask
+	Unstack Clips
+	Update it at least every
+	Update timeline dynamically during ripple edits.
+	Username
+	Utility
+	VBR, 1 pass
+	VBR, 2 pass
+	VHS Damage
+	VR Chroma Leaks
+	VR Chromatic Aberrations
+	VR Color Gradients
+	VR De-Noise
+	VR Digital Glitch
+	VR Fractal Noise
+	VR Light Leaks
+	VR Light Rays
+	VR Mobius Zoom
+	VR Plane to Sphere
+	VR Projection
+	VR Random Blocks
+	VR Rotate Sphere
+	VR Sharpen
+	VR Spherical Blur
+	Validate Content Credentials on import
+	Vectorscope (YUV)
+	Vectorscope + Waveform YC
+	Vectorscope HLS
+	Vectorscope YUV
+	Venetian Blinds
+	Vertical 4:5
+	Vertical 9:16
+	Vertical Alignment
+	Vertical Decentering
+	Vertical Displacement
+	Vertical Flip
+	Vertical Margin
+	Very Narrow
+	Video 1
+	Video 2
+	Video 3
+	Video 4
+	Video 5
+	Video 6
+	Video 7
+	Video 8
+	Video Codec
+	Video Info
+	Video Limiter
+	Video Previews
+	Video Usage
+	Vignette
+	Vimeo 1080p Full HD
+	Vimeo 2160p 4K Ultra HD
+	Vivid Light
+	Vocal Booth
+	Vocal Enhancer
+	Voice
+	Voice in a Hall
+	Voice-over take discarded
+	Voiceover
+	Volumetric Rays
+	WAV, stereo 48 kHz 16-bit PCM
+	WAV, stereo 48 kHz 24-bit PCM
+	Warm highlights, brown shadows
+	Warm print stock with gentle roll-off
+	Warm, soft late-afternoon light
+	Wave
+	Wave Height
+	Wave Speed
+	Wave Warp
+	Wave Width
+	Waveform (Luma)
+	Waveform (RGB)
+	Waveform Audio 48 kHz 16-bit
+	Waveform Audio 48 kHz 24-bit
+	Wavelength
+	Web & Social
+	Wet
+	Wet Out
+	Whip
+	Whip (Legacy)
+	Whisper base (balanced)
+	Whisper small (most accurate)
+	Whisper tiny (fastest)
+	White
+	White Is High
+	Wide Outdoor
+	Widener
+	Wiggle
+	Wipe
+	Wonder Glow
+	Work Area
+	Wrap Back
+	Write
+	Write Automation
+	Write XMP ID to files on import
+	Write clip markers to XMP
+	Write-on
+	X Rotation
+	Y Rotation
+	YC
+	YC no Chroma
+	YUV
+	Yellow-green highlights and blue-lifted shadows from crossed channel curves
+	YouTube 1080p Full HD
+	YouTube 2160p 4K Ultra HD
+	Z Position
+	Z Rotation
+	days
+	frames
+	horizontal
+	in
+	milliseconds
+	minute(s)
+	no Chinese font is installed on this system; the interface stays in English
+	no Japanese font is installed on this system; the interface stays in English
+	out
+	second(s)
+	seconds
+	tracks
+	vertical
+	with:
+	{rate} fps Drop-Frame Timecode
+	{rate} fps Non Drop-Frame Timecode
+	{rate} fps Timecode
+	{rate} frames/second
